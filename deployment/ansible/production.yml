@@ -4,7 +4,7 @@
   hosts: all
   sudo: yes
   sudo_user: root
-  remote_user: jonathan
+  remote_user: root
   vars:
     - setup_git_repo: yes
     - setup_cron_jobs: yes
