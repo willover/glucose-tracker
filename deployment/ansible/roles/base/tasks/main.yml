@@ -8,7 +8,6 @@
     - libssl-doc
   tags: packages
 
-
 - name: Install base packages
   apt: name={{ item }} update_cache={{ update_apt_cache }} force=yes state=installed
   with_items:
@@ -22,11 +21,9 @@
     - supervisor
   tags: packages
 
-
 - name: Install newrelic
   pip: name=newrelic
   tags: packages
-
 
 # Note that we're specifying the version number here as we don't want to use
 # the latest version. The latest version of virtualenv is using a newer version
