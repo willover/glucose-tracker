@@ -1,12 +1,9 @@
 Glucose Tracker
 ===============
-<a href="https://travis-ci.org/jcalazan/glucose-tracker"><img src="https://travis-ci.org/jcalazan/glucose-tracker.png"></a>
 
 A simple web application for keeping track of blood glucose levels.  Written in Python using the Django framework.
 
-<b>Main Site:</b> http://www.glucosetracker.net
-
-<b>Live Demo:</b> http://demo.glucosetracker.net
+<b>Main Site:</b> https://www.glucosetracker.net
 
 <b>Features:</b>
 
@@ -16,13 +13,13 @@ A simple web application for keeping track of blood glucose levels.  Written in 
 * <b>Data filtering.</b>  Advanced filtering: filter by glucose range, date range, category, tag, and notes.
 * <b>Tagging.</b>  An optional tag field to help further organize and make sense of your data. For example, it might be useful to add tags to a record such as: exercise, sick, insulin, fasting, etc.
 * <b>A1C estimation.</b>  Estimate A1C based on data from the last 3 months.
+* <b>Import data from CSV.</b> Import existing data from other software/systems.
 * <b>Mobile friendly.</b>  Layout adapts to screen size.
 
 <b>Some point in the future:</b>
 
 * A simple Android app that works offline and auto-syncs to the remote database via REST calls.
 
-<b>To Do List:</b> https://trello.com/c/ZN9ualI3
 
 Installation/Running the App
 ----------------------------
@@ -33,13 +30,6 @@ Installation/Running the App
 4. Run the South migration: e.g. python manage.py migrate --all --settings=settings.localdemo
 5. (Optional) Populate your database with dummy data: e.g. python manage.py load_random_glucose_data jsmith --settings=settings.localdemo (note that 'jsmith' can be changed to any username you like, the password will always be 'demo').
 6. Run the local web server: e.g. python manage.py runserver --settings=settings.localdemo
-
-Live Demo
----------
-
-A live demo is available at: http://demo.glucosetracker.net
-
-This project uses Travis CI to auto-deploy the latest code from the master branch to the demo site hosted on Heroku on git push.
 
 3rd-Party Apps/Libraries/Plugins
 --------------------------------

@@ -17,12 +17,3 @@ urlpatterns = patterns('',
     url(r'^dashboard/$', view=dashboard, name='dashboard'),
     url(r'^subscribe/$', view='subscribers.views.subscribe_view', name='subscribe'),
 )
-
-# For serving static files on Heroku, see
-# http://matthewphiong.com/managing-django-static-files-on-heroku
-from django.conf import settings
-urlpatterns += patterns('',
-    url(r'^static/(?P<path>.*)$', 'django.views.static.serve', {
-        'document_root': settings.STATIC_ROOT,
-    }),
-)
