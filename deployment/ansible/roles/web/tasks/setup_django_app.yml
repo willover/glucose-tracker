@@ -2,7 +2,6 @@
 
 - name: Install packages required by the Django app inside virtualenv
   pip: virtualenv={{ virtualenv_path }} requirements={{ requirements_file }}
-  tags: django
 
 - name: Run the Django syncdb command
   shell: . {{ virtualenv_path }}/bin/activate
@@ -10,7 +9,6 @@
          && cd {{ application_path }}
          && python manage.py syncdb --noinput --settings={{ django_settings_file }}
   when: run_django_syncdb
-  tags: django
 
 - name: Run Django South migrations
   shell: . {{ virtualenv_path }}/bin/activate
@@ -18,7 +16,6 @@
          && cd {{ application_path }}
          && python manage.py migrate --noinput --settings={{ django_settings_file }}
   when: run_django_south_migration
-  tags: django
 
 - name: Run Django collectstatic
   shell: . {{ virtualenv_path }}/bin/activate
@@ -26,7 +23,6 @@
          && cd {{ application_path }}
          && python manage.py collectstatic --noinput --settings={{ django_settings_file }}
   when: run_django_collectstatic
-  tags: django
 
 - name: Load random glucose data
   shell: . {{ virtualenv_path }}/bin/activate
@@ -34,7 +30,6 @@
          && cd {{ application_path }}
          && python manage.py load_random_glucose_data {{ test_user }} --settings={{ django_settings_file }}
   when: load_random_glucose_data
-  tags: django
 
 
 
