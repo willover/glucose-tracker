@@ -19,6 +19,7 @@ search_terms = [
     '#bgnow',
     '#t1d',
     '#insulin',
+    '#glucose',
 ]
 
 for search_term in search_terms:
