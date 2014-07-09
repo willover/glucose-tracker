@@ -56,8 +56,8 @@ STATICFILES_DIRS = (
 # List of finder classes that know how to find static files in
 # various locations.
 STATICFILES_FINDERS = (
-    'django.contrib.staticfiles.finders.FileSystemFinder',
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+    'django.contrib.staticfiles.finders.FileSystemFinder',
     'compressor.finders.CompressorFinder',
 #    'django.contrib.staticfiles.finders.DefaultStorageFinder',
 )
@@ -80,6 +80,9 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     'django.core.context_processors.static',
     'django.core.context_processors.tz',
     'django.contrib.messages.context_processors.messages',
+
+    # Used by Grappelli
+    'django.core.context_processors.request',
 
     # 3rd-party context processors
     'stickymessages.context_processors.latest_sticky_message',
@@ -111,6 +114,9 @@ TEMPLATE_DIRS = (
 )
 
 INSTALLED_APPS = (
+    # Grappelli custom admin, needs to be defined before the admin app.
+    'grappelli',
+
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
@@ -121,16 +127,18 @@ INSTALLED_APPS = (
     'django.contrib.humanize',
 
     # 3rd-party apps
-    'south',
+    'axes',
     'compressor',
     'crispy_forms',
     'gunicorn',
-    'taggit',
-    'axes',
+    'redactor',
+    'south',
     'stickymessages',
+    'taggit',
 
     # Local apps
     'accounts',
+    'blogs',
     'core',
     'glucoses',
     'subscribers',
@@ -192,3 +200,12 @@ LOGGING = {
         }
     }
 }
+
+# Grappelli settings.
+GRAPPELLI_ADMIN_TITLE = SITE_NAME
+
+# Django WYSIWYG Redactor settings.
+REDACTOR_OPTIONS = {
+    'lang': 'en',
+}
+REDACTOR_UPLOAD = 'editor-uploads/'
