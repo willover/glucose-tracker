@@ -14,6 +14,7 @@ SECRET_KEY = 'akr2icmg1n8%z^3fe3c+)5d0(t^cy-2_25rrl35a7@!scna^1#'
 # 3rd-party apps tracking IDs.
 INTERCOM_APP_ID = None
 GOOGLE_ANALYTICS_TRACKING_ID = None
+SHARETHIS_PUBLISHER_ID = None
 
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_HOST_USER = ''

@@ -13,6 +13,7 @@ SECRET_KEY = '79&vz)($@07na+25vw4nb0r^p*6w0j+-x!m)y5p#76tp!gvs_5'
 # 3rd-party apps tracking IDs.
 INTERCOM_APP_ID = None
 GOOGLE_ANALYTICS_TRACKING_ID = None
+SHARETHIS_PUBLISHER_ID = None
 
 EMAIL_HOST = 'smtp.example.com'
 EMAIL_HOST_USER = 'test'

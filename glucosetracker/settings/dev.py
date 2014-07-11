@@ -13,6 +13,7 @@ SECRET_KEY = os.environ['DJANGO_SECRET_KEY']
 # 3rd-party apps tracking IDs.
 INTERCOM_APP_ID = None
 GOOGLE_ANALYTICS_TRACKING_ID = None
+SHARETHIS_PUBLISHER_ID = None
 
 EMAIL_HOST = os.environ['EMAIL_HOST']
 EMAIL_HOST_USER = os.environ['EMAIL_HOST_USER']
