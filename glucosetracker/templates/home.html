@@ -6,13 +6,6 @@
 <link href="{{ STATIC_URL }}bootstrap/css/carousel.css" rel="stylesheet">
 {% endblock %}
 
-<!-- ShareThis Button -->
-{% block extrahead %}
-<script type="text/javascript">var switchTo5x=true;</script>
-<script type="text/javascript" src="https://ws.sharethis.com/button/buttons.js"></script>
-<script type="text/javascript" src="https://sd.sharethis.com/loader.js"></script>
-{% endblock %}
-
 {% block rootcontainer %}
     <!-- Main jumbotron for a primary marketing message or call to action -->
     <div class="jumbotron" style="background-color:#777; color:white">
@@ -143,12 +136,8 @@
     fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');
 </script>
 
-<!-- ShareThis Button -->
-<script type="text/javascript">stLight.options({publisher: "{{ sharethis_publisher_id }}", doNotHash: false, doNotCopy: false, hashAddressBar: false});</script>
-<script>
-var options={ "publisher": "{{ sharethis_publisher_id }}", "position": "left", "ad": { "visible": false, "openDelay": 5, "closeDelay": 0}, "chicklets": { "items": ["twitter", "facebook", "linkedin", "pinterest", "email", "sharethis"]}};
-var st_hover_widget = new sharethis.widgets.hoverbuttons(options);
-</script>
+<!-- AddThis Buttons -->
+<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid={{ addthis_publisher_id }}"></script>
 
 <script src="{{ STATIC_URL }}bootstrap/js/holder.js"></script>
 {% endblock %}
