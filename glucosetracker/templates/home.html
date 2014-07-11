@@ -128,7 +128,10 @@
 {% endblock %}
 
 {% block extrajs %}
+<script src="{{ STATIC_URL }}bootstrap/js/holder.js"></script>
+{% endblock %}
 
+{% block extrajsexternal %}
 <!-- Twitter Follow Button -->
 <script>!function(d,s,id){
     var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';
@@ -136,9 +139,6 @@
     fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');
 </script>
 
-<script src="{{ STATIC_URL }}bootstrap/js/holder.js"></script>
-{% endblock %}
-
 <!-- AddThis Buttons -->
 <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid={{ addthis_publisher_id }}"></script>
-
+{% endblock %}
