@@ -6,6 +6,12 @@
 <link href="{{ STATIC_URL }}bootstrap/css/carousel.css" rel="stylesheet">
 {% endblock %}
 
+{% block customcss %}
+    <style>
+        body {margin-top: 40px;}
+    </style>
+{% endblock %}
+
 {% block rootcontainer %}
     <!-- Main jumbotron for a primary marketing message or call to action -->
     <div class="jumbotron" style="background-color:#777; color:white">
@@ -112,17 +118,6 @@
       <hr class="featurette-divider">
 
       <!-- /END THE FEATURETTES -->
-
-
-      <!-- FOOTER -->
-      <footer>
-        <p class="pull-right"><a href="#">Back to top</a></p>
-        <p>
-            &copy; 2014 GlucoseTracker.net by <a href="http://www.calazan.com">Jonathan Calazan</a>
-            | <a href="https://www.facebook.com/glucose.tracker/info">About GlucoseTracker</a>
-            | <a href="mailto:info@glucosetracker.net">Contact Us</a>
-        </p>
-      </footer>
 
     </div><!-- /.container -->
 {% endblock %}

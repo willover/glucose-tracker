@@ -1,0 +1,17 @@
+{% extends 'blogs/blog_base.html' %}
+
+{% block heading %}
+<h3><span class="glyphicon glyphicon-list-alt"></span>  Blog Posts</h3>
+{% endblock %}
+
+{% block content %}
+    {% if blog_list %}
+        {% for blog in blog_list %}
+            <h4><a href="{% url 'blog_detail_view' blog.slug %}">{{ blog.title }}</a></h4>
+            {% if blog.is_published %}Posted on {{ blog.date_published|date:'M d, Y' }}{% else %}Unpublished{% endif %} by {{ blog.author.get_full_name }}
+            <hr>
+        {% endfor %}
+    {% else %}
+        <p class="lead">Coming soon!</p>
+    {% endif %}
+{% endblock %}

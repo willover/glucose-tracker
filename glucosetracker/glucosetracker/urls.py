@@ -16,6 +16,7 @@ urlpatterns = patterns('',
     url(r'^accounts/', include('accounts.urls')),
     url(r'^core/', include('core.urls')),
     url(r'^glucoses/', include('glucoses.urls')),
+    url(r'^blog/', include('blogs.urls')),
 
     url(r'^dashboard/$', view=dashboard, name='dashboard'),
     url(r'^subscribe/$', view='subscribers.views.subscribe_view', name='subscribe'),

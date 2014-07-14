@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.core.urlresolvers import reverse
 
 from django_extensions.db.fields import AutoSlugField
 from taggit.managers import TaggableManager
@@ -11,6 +12,23 @@ STATUS_CHOICES = (
     ('draft', 'Draft'),
     ('published', 'Published'),
 )
+
+
+class BlogManager(models.Manager):
+
+    def publicly_viewable(self):
+        """
+        Return articles that have a status of 'published'.
+        """
+        return self.select_related().filter(
+            status__iexact='published'
+        )
+
+    def recent_posts(self, count=5):
+        """
+        Return the most recent posts, default to the last 5 by published date.
+        """
+        return self.publicly_viewable().order_by('-date_published')[:count]
 
 
 class Blog(TimeStampedModel):
@@ -42,10 +60,12 @@ class Blog(TimeStampedModel):
         if self.slug:
             return '<a href="%s" target="_blank">%s</a> (will open in a new' \
                    ' window, make sure to save your changes first)' % \
-                   'hello'#(reverse('blog_detail_view', args=[self.slug]), self.title)
+                   (reverse('blog_detail_view', args=[self.slug]), self.title)
         else:
             return 'Not available (you must save this article first)'
     preview_link.allow_tags = True
+
+    objects = BlogManager()
 
     def __unicode__(self):
         return self.title
