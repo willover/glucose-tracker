@@ -20,13 +20,11 @@ class BlogManager(models.Manager):
         """
         Return articles that have a status of 'published'.
         """
-        return self.select_related().filter(
-            status__iexact='published'
-        )
+        return self.select_related().filter(status__iexact='published')
 
     def recent_posts(self, count=5):
         """
-        Return the most recent posts, default to the last 5 by published date.
+        Return the most recent posts, defaults to the last 5 by date published.
         """
         return self.publicly_viewable().order_by('-date_published')[:count]
 
