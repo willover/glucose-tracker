@@ -37,9 +37,7 @@
                 <a href="{{ STATIC_URL }}images/screenshots/glucosetracker_dashboard_001.png" class="thumbnail">
                     <img src="{{ STATIC_URL }}images/screenshots/glucosetracker_dashboard_001.png">
                 </a>
-                <p class="text-center">
-                    <a href="https://twitter.com/glucosetracker" class="twitter-follow-button" data-show-count="false" data-size="large">Follow @glucosetracker</a>
-                </p>
+                <div class="addthis_sharing_toolbox text-center"></div>
             </div>
         </div>
       </div>
@@ -103,15 +101,32 @@
 
       <div class="row featurette">
         <div class="col-md-7">
-          <h2 class="featurette-heading">Mobile friendly. <span class="text-muted">Layout adapts to screen size.</span></h2>
-          <p class="lead">Prefer using your tablet or smartphone? No problem! GlucoseTracker was designed with mobile devices
-            in mind. The website will automatically adjust based on the screen size so it will always be easy for you to use.
+          <h2 class="featurette-heading">Supports CSV Import. <span class="text-muted">Import existing data in CSV format.</span></h2>
+          <p class="lead">Got existing data and too lazy to enter them manually? Most systems support exporting data in CSV
+              (comma-separated values) format.  Save time entering them manually as GlucoseTracker supports importing data from a
+              CSV file!
           </p>
         </div>
+        <div class="col-md-5">
+            <a href="{{ STATIC_URL }}images/screenshots/glucosetracker_import_from_csv_001.png" class="thumbnail">
+                <img class="featurette-image img-responsive" src="{{ STATIC_URL }}images/screenshots/glucosetracker_import_from_csv_001.png">
+            </a>
+        </div>
+      </div>
+
+      <hr class="featurette-divider">
+
+      <div class="row featurette">
         <div class="col-md-5">
             <a href="{{ STATIC_URL }}images/screenshots/glucosetracker_dashboard_mobile_001.png" class="thumbnail">
                 <img class="featurette-image img-responsive" src="{{ STATIC_URL }}images/screenshots/glucosetracker_dashboard_mobile_001.png">
             </a>
+        </div>
+        <div class="col-md-7">
+          <h2 class="featurette-heading">Mobile friendly. <span class="text-muted">Layout adapts to screen size.</span></h2>
+          <p class="lead">Prefer using your tablet or smartphone? No problem! GlucoseTracker was designed with mobile devices
+            in mind. The website will automatically adjust based on the screen size so it will always be easy for you to use.
+          </p>
         </div>
       </div>
 
@@ -124,16 +139,4 @@
 
 {% block extrajs %}
 <script src="{{ STATIC_URL }}bootstrap/js/holder.js"></script>
-{% endblock %}
-
-{% block extrajsexternal %}
-<!-- Twitter Follow Button -->
-<script>!function(d,s,id){
-    var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';
-    if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';
-    fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');
-</script>
-
-<!-- AddThis Buttons -->
-<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid={{ addthis_publisher_id }}"></script>
 {% endblock %}

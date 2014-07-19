@@ -11,3 +11,13 @@ def third_party_tracking_ids(request):
         'intercom_app_id': settings.INTERCOM_APP_ID,
         'addthis_publisher_id': settings.ADDTHIS_PUBLISHER_ID,
     }
+
+
+def site_info(request):
+    """
+    Return site-related information.
+    """
+    return {
+        'site_name': settings.SITE_NAME,
+        'site_domain': settings.SITE_DOMAIN,
+    }

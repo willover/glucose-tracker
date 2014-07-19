@@ -9,7 +9,7 @@
         <meta name="description" content="">
         <meta name="author" content="">
 
-        <title>{% block title %}GlucoseTracker.net | Simple Glucose Management App{% endblock %}</title>
+        <title>{% block title %}{{ site_name }} | Simple Glucose Management App{% endblock %}</title>
 
         <!-- CSS -->
         {% compress css %}
@@ -175,6 +175,8 @@
             });
         </script>
 
+        <!-- Go to www.addthis.com/dashboard to customize your tools -->
+        <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-52fffdf9456ec7d2"></script>
        {% block extrajsexternal %}{% endblock %}
     </body>
 </html>

@@ -1,9 +1,20 @@
 {% extends 'blogs/blog_base.html' %}
 
+{% block title %}{{ blog.title }} | {{ site_name }}{% endblock %}
+
 {% block heading %}
-<h3>{{ blog.title }}</h3>
-{% if blog.is_published %}Posted on {{ blog.date_published|date:'M d, Y' }}{% else %}Unpublished{% endif %} by {{ blog.author.get_full_name }}
-{% if user.is_superuser %} <a href="{% url 'admin:blogs_blog_change' blog.id %}"><u>Edit</u></a>{% endif %}
+    <h3>{{ blog.title }}</h3>
+    {% if blog.is_published %}Posted on {{ blog.date_published|date:'M d, Y' }}{% else %}Unpublished{% endif %} by {{ blog.author.get_full_name }}
+    {% if user.is_superuser %} <a href="{% url 'admin:blogs_blog_change' blog.id %}"><u>Edit</u></a>{% endif %}
+{% endblock %}
+
+{% block content %}
+    <div class="addthis_native_toolbox text-center"></div>
+    <div>{{ blog.content|safe }}</div>
+
+    <!--<div>-->
+        <!--<span class="glyphicon glyphicon-tags"></span> {{ blog.tags.names }}-->
+    <!--</div>-->
 {% endblock %}
 
 {% block extrapanelsbefore %}
@@ -20,11 +31,4 @@
             <a href="{% url 'blog_list_view' %}">See all posts...</a>
         </div>
     </div>
-{% endblock %}
-
-{% block content %}
-    {{ blog.content|safe }}
-    <!--<div>-->
-        <!--<span class="glyphicon glyphicon-tags"></span> {{ blog.tags.names }}-->
-    <!--</div>-->
 {% endblock %}

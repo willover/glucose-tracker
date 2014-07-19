@@ -89,6 +89,7 @@ TEMPLATE_CONTEXT_PROCESSORS = (
 
     # GlucoseTracker context processors
     'core.context_processors.third_party_tracking_ids',
+    'core.context_processors.site_info',
 )
 
 MIDDLEWARE_CLASSES = (
