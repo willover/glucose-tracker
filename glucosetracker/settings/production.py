@@ -10,6 +10,17 @@ ALLOWED_HOSTS = ['.glucosetracker.net']
 # Make this unique, and don't share it with anybody.
 SECRET_KEY = os.environ['DJANGO_SECRET_KEY']
 
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'glucosetracker',
+        'USER': os.environ['DATABASE_USER'],
+        'PASSWORD': os.environ['DATABASE_PASSWORD'],
+        'HOST': 'localhost',
+        'PORT': '',
+    }
+}
+
 # 3rd-party apps tracking IDs.
 INTERCOM_APP_ID = 'a6d0326564469dfd7f7d9b1bfc909ee3815a85a8'
 GOOGLE_ANALYTICS_TRACKING_ID = 'UA-45698014-1'
@@ -36,16 +47,13 @@ CONTACTS = {
     'info_email': 'info@glucosetracker.net',
 }
 
-# For 'subscribers' app
+# Subscribers app settings
 SEND_SUBSCRIBERS_EMAIL_CONFIRMATION = True
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'glucosetracker',
-        'USER': os.environ['DATABASE_USER'],
-        'PASSWORD': os.environ['DATABASE_PASSWORD'],
-        'HOST': 'localhost',
-        'PORT': '',
-    }
-}
+# Django-storages settings
+DEFAULT_FILE_STORAGE = 'core.s3utils.MediaRootS3BotoStorage'
+
+AWS_STORAGE_BUCKET_NAME = 'glucosetracker-assets'
+AWS_QUERYSTRING_AUTH = False
+
+MEDIA_URL = '//%s.s3.amazonaws.com/%s/' % (AWS_STORAGE_BUCKET_NAME, MEDIA_ROOT)

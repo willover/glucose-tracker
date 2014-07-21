@@ -31,7 +31,7 @@ USE_TZ = True
 
 # Absolute filesystem path to the directory that will hold user-uploaded files.
 # Example: "/var/www/example.com/media/"
-MEDIA_ROOT = '/webapps/glucosetracker/media/'
+MEDIA_ROOT = 'media'
 
 # URL that handles the media served from MEDIA_ROOT. Make sure to use a
 # trailing slash.
@@ -136,6 +136,7 @@ INSTALLED_APPS = (
     'south',
     'stickymessages',
     'taggit',
+    'storages',
 
     # Local apps
     'accounts',
@@ -210,3 +211,7 @@ REDACTOR_OPTIONS = {
     'lang': 'en',
 }
 REDACTOR_UPLOAD = 'editor-uploads/'
+
+# Django-Storages settings.
+AWS_ACCESS_KEY_ID = os.environ['AWS_ACCESS_KEY_ID']
+AWS_SECRET_ACCESS_KEY = os.environ['AWS_SECRET_ACCESS_KEY']
