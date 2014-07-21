@@ -1,3 +1,5 @@
+from datetime import datetime
+
 from django.db import models
 from django.contrib.auth.models import User
 from django.core.urlresolvers import reverse
@@ -18,9 +20,13 @@ class BlogManager(models.Manager):
 
     def publicly_viewable(self):
         """
-        Return articles that have a status of 'published'.
+        Return blog posts that have a status of 'published' and date_published
+        that is less than or equal to the current date and time.
         """
-        return self.select_related().filter(status__iexact='published')
+        return self.select_related().filter(
+            date_published__lte=datetime.now(),
+            status__iexact='published'
+        )
 
     def recent_posts(self, count=5):
         """
