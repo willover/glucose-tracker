@@ -3,6 +3,15 @@ from .base import *
 DEBUG = False
 TEMPLATE_DEBUG = DEBUG
 
+# Use the cached template loader so template is compiled once and read from
+# memory instead of reading from disk on each load.
+TEMPLATE_LOADERS = (
+    ('django.template.loaders.cached.Loader', (
+        'django.template.loaders.filesystem.Loader',
+        'django.template.loaders.app_directories.Loader',
+    )),
+)
+
 # Hosts/domain names that are valid for this site; required if DEBUG is False
 # See https://docs.djangoproject.com/en/1.5/ref/settings/#allowed-hosts
 ALLOWED_HOSTS = ['.glucosetracker.net']
