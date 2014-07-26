@@ -62,8 +62,7 @@ class Blog(TimeStampedModel):
 
     def preview_link(self):
         if self.slug:
-            return '<a href="%s" target="_blank">%s</a> (will open in a new' \
-                   ' window, make sure to save your changes first)' % \
+            return '<a href="%s" target="_blank">%s</a>' % \
                    (reverse('blog_detail_view', args=[self.slug]), self.title)
         else:
             return 'Not available (you must save this article first)'

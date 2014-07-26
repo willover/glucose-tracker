@@ -13,6 +13,12 @@
 
     <div>{{ blog.content|safe }}</div>
 
+    <div>
+    {% if blog.tags.exists %}
+        <p><span class="glyphicon glyphicon-tags"></span> Tags: {% for tag_name in blog.tags.names %}<a href="{% url 'blog_list_view' %}?tag={{ tag_name }}">{{ tag_name }}</a> {% endfor %}</p>
+    {% endif %}
+    </div>
+
     <div id="disqus_thread"></div>
     <script type="text/javascript">
         /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
@@ -27,10 +33,6 @@
     </script>
     <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
     <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
-
-    <!--<div>-->
-        <!--<span class="glyphicon glyphicon-tags"></span> {{ blog.tags.names }}-->
-    <!--</div>-->
 {% endblock %}
 
 {% block extrapanelsbefore %}
