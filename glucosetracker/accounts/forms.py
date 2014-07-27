@@ -1,6 +1,5 @@
 from django import forms
 from django.core.urlresolvers import reverse
-from django.conf import settings
 from django.contrib.auth.models import User
 
 from crispy_forms.helper import FormHelper, Layout
@@ -41,7 +40,7 @@ class SignUpForm(forms.Form):
                 Field('time_zone'),
             ),
             FormActions(
-                Submit('submit', 'Create My Account'),
+                Submit('submit', 'Create My Account', css_class='btn-success'),
             ),
         )
 

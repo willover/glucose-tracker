@@ -2,11 +2,8 @@ from datetime import datetime
 
 from django import forms
 from django.contrib import admin
-from django.contrib.admin.widgets import FilteredSelectMultiple
 
 from redactor.widgets import RedactorEditor
-from taggit.models import Tag
-
 from blogs.models import Blog
 
 
@@ -15,10 +12,6 @@ class BlogAdminForm(forms.ModelForm):
         super(BlogAdminForm, self).__init__(*args, **kwargs)
 
         self.fields['content'].widget = RedactorEditor()
-        # self.fields['tags'] = forms.ModelMultipleChoiceField(
-        #     queryset=Tag.objects.all(),
-        #     widget=FilteredSelectMultiple('Tags', is_stacked=False)
-        # )
 
 
 class BlogAdmin(admin.ModelAdmin):

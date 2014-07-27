@@ -3,10 +3,11 @@ from django.conf.urls import patterns, include, url
 from django.contrib import admin
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 
-admin.autodiscover()
-
 from core.views import HomePageView
 from glucoses.views import dashboard
+
+
+admin.autodiscover()
 
 
 urlpatterns = patterns('',
