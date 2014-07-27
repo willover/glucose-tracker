@@ -40,7 +40,8 @@ class SignUpForm(forms.Form):
                 Field('time_zone'),
             ),
             FormActions(
-                Submit('submit', 'Create My Account', css_class='btn-success'),
+                Submit('submit', 'Create My Account',
+                       css_class='btn-success pull-right'),
             ),
         )
 
