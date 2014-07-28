@@ -12,6 +12,7 @@ from core.models import TimeStampedModel
 
 STATUS_CHOICES = (
     ('draft', 'Draft'),
+    ('ready', 'Ready'),
     ('published', 'Published'),
 )
 
