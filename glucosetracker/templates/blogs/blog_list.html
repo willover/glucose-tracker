@@ -4,7 +4,7 @@
 
 {% block heading %}
     <h3>
-        <span class="glyphicon glyphicon-list-alt"></span>  Blog Posts
+        <span class="glyphicon glyphicon-list-alt"></span> Blog Posts
         {% if user.is_superuser %} <small><a href="{% url 'admin:blogs_blog_add' %}"><u>Add</u></a></small>{% endif %}
     </h3>
 {% endblock %}
