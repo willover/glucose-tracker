@@ -1,3 +1,5 @@
+import logging
+
 from django.shortcuts import render_to_response, HttpResponseRedirect
 from django.views.generic import FormView
 from django.template import RequestContext
@@ -13,6 +15,9 @@ from core.utils import glucose_by_unit_setting, to_mg
 
 from .models import UserSettings
 from .forms import UserSettingsForm, SignUpForm
+
+
+logger = logging.getLogger(__name__)
 
 
 @watch_login
@@ -70,6 +75,8 @@ class SignUpView(FormView):
             user_settings.glucose_unit = form.cleaned_data['glucose_unit']
             user_settings.time_zone = form.cleaned_data['time_zone']
             user_settings.save()
+
+            logger.info('New user signed up: %s (%s)', user, user.email)
 
             # Automatically authenticate the user after user creation.
             user_auth = authenticate(username=username, password=password)
