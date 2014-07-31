@@ -1,8 +1,7 @@
-from datetime import datetime
-
 from django.db import models
 from django.contrib.auth.models import User
 from django.core.urlresolvers import reverse
+from django.utils import timezone
 
 from django_extensions.db.fields import AutoSlugField
 from taggit.managers import TaggableManager
@@ -25,7 +24,7 @@ class BlogManager(models.Manager):
         that is less than or equal to the current date and time.
         """
         return self.select_related().filter(
-            date_published__lte=datetime.now(),
+            date_published__lte=timezone.now(),
             status__iexact='published'
         )
 
