@@ -238,6 +238,7 @@ class GlucoseEmailReportView(LoginRequiredMixin, FormView):
                 form.cleaned_data['subject'],
                 form.cleaned_data['recipient']
             )
+
             report.email(form.cleaned_data['recipient'],
                          form.cleaned_data['subject'],
                          form.cleaned_data['message'])
@@ -263,7 +264,6 @@ class GlucoseCreateView(LoginRequiredMixin, CreateView):
             'record_date': record_date,
             'record_time': record_time,
         }
-
 
     def form_valid(self, form):
         # If the 'Save & Add Another' button is clicked, the submit_button_type
