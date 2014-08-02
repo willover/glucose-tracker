@@ -155,6 +155,8 @@ class UserSettingsView(LoginRequiredMixin, FormView):
             user.settings.glucose_target_max = glucose_target_max
             user.settings.save()
 
+            logger.info('Account Settings updated by %s', request.user)
+
             return self.form_valid(form)
         else:
             return self.form_invalid(form)

@@ -176,6 +176,8 @@ def quick_add(request):
             obj.record_time = datetime.now(tz=user.settings.time_zone).time()
             obj.save()
 
+            logger.info('Quick Add by %s: %s', request.user, post_values['value'])
+
             message = {'success': True}
 
             return HttpResponse(json.dumps(message))
@@ -301,6 +303,9 @@ class GlucoseCreateView(LoginRequiredMixin, CreateView):
         if request.user.settings.glucose_unit.name == 'mmol/L':
             request.POST['value'] = to_mg(request.POST['value'])
 
+        logger.info('New glucose added by %s: %s', request.user,
+                    request.POST['value'])
+
         return super(GlucoseCreateView, self).post(request, *args, **kwargs)
 
 
@@ -338,6 +343,9 @@ class GlucoseUpdateView(LoginRequiredMixin, UpdateView):
         request.POST = request.POST.copy()
         if request.user.settings.glucose_unit.name == 'mmol/L':
             request.POST['value'] = to_mg(request.POST['value'])
+
+        logger.info('Glucose updated by %s, glucose id: %s', request.user,
+                    kwargs['pk'])
 
         return super(GlucoseUpdateView, self).post(request, *args, **kwargs)
 

@@ -2,6 +2,7 @@ import csv
 import cStringIO
 from io import BytesIO
 from datetime import datetime, timedelta
+import logging
 
 from reportlab.lib import colors
 from reportlab.lib.enums import TA_CENTER, TA_LEFT, TA_RIGHT, TA_JUSTIFY
@@ -19,6 +20,8 @@ from core import utils as core_utils
 
 from .models import Glucose
 
+
+logger = logging.getLogger(__name__)
 
 DATE_FORMAT = '%m/%d/%Y'
 FILENAME_DATE_FORMAT = '%b%d%Y'
@@ -264,6 +267,8 @@ class GlucoseBaseReport(object):
         self.start_date = start_date
         self.end_date = end_date
         self.user = user
+        self.email_footer = '----------\nSent from https://%s' % \
+                            settings.SITE_DOMAIN
 
     def glucose_by_unit_setting(self, value):
         return core_utils.glucose_by_unit_setting(self.user, value)
@@ -290,12 +295,16 @@ class GlucoseCsvReport(GlucoseBaseReport):
                     item.notes,
                 ])
 
+            logging.info('CSV report generated for %s', self.user)
+
             return csv_data.getvalue()
 
         finally:
             csv_data.close()
 
     def email(self, recipient, subject='', message=''):
+        message = '%s\n\n\n%s' % (message, self.email_footer)
+        
         email = EmailMessage(from_email=settings.CONTACTS['info_email'],
                              subject=subject, body=message, to=[recipient])
 
@@ -393,11 +402,12 @@ class GlucosePdfReport(GlucoseBaseReport):
         pdf = buffer.getvalue()
         buffer.close()
 
+        logging.info('PDF report generated for %s', self.user)
+
         return pdf
 
     def email(self, recipient, subject='', message=''):
-        footer = '----------\nSent from https://%s' % settings.SITE_DOMAIN
-        message = '%s\n\n\n%s' % (message, footer)
+        message = '%s\n\n\n%s' % (message, self.email_footer)
 
         email = EmailMessage(from_email=settings.CONTACTS['info_email'],
                              subject=subject, body=message, to=[recipient])
