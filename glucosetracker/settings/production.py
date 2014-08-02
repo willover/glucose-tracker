@@ -51,9 +51,9 @@ ADMINS = (
 MANAGERS = ADMINS
 
 CONTACTS = {
-    'support_email': 'support@glucosetracker.net',
+    'support_email': 'GlucoseTracker.net <support@glucosetracker.net>',
     'admin_email': 'admin@glucosetracker.net',
-    'info_email': 'info@glucosetracker.net',
+    'info_email': 'GlucoseTracker.net <info@glucosetracker.net>',
 }
 
 # Subscribers app settings
