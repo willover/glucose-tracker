@@ -13,7 +13,6 @@
     - newrelic
     - deploy
 
-
 - name: Create the Gunicorn script file
   template: src=gunicorn_start.j2
             dest={{ virtualenv_path }}/bin/gunicorn_start
@@ -21,6 +20,9 @@
             group={{ gunicorn_group }}
             mode=0755
             backup=yes
+  tags:
+    - gunicorn
+    - deploy
 
 - name: Create the application log folder
   file: path={{ application_log_dir }}
