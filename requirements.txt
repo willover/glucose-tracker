@@ -16,7 +16,6 @@ django-timezone-field==1.0
 factory-boy==2.2.1
 gunicorn==18.0
 ipython==1.1.0
-newrelic==2.10.0.8
 psycopg2==2.5.1
 pycrypto==2.6.1
 pytz==2013.7
@@ -27,4 +26,5 @@ django-grappelli==2.5.3
 django-wysiwyg-redactor==0.3.9.1
 django-storages==1.1.8
 requests==2.3.0
+newrelic==2.22.1.20
 LogentriesLogger==0.2.1

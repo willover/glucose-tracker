@@ -21,10 +21,6 @@
     - supervisor
   tags: packages
 
-- name: Install newrelic
-  pip: name=newrelic
-  tags: packages
-
 # Note that we're specifying the version number here as we don't want to use
 # the latest version. The latest version of virtualenv is using a newer version
 # of pip which doesn't work work with some of the packages we use in Django.

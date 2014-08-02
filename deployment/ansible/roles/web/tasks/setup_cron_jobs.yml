@@ -6,8 +6,6 @@
         user={{ gunicorn_user }}
         job="bash {{ project_path }}/scripts/run_twitter_auto_follow.sh"
         state=present
-  when: setup_cron_jobs
-  tags: cron
 
 - name: Ensure that an hourly db backup job exists
   cron: name="hourly db backup"
@@ -15,8 +13,6 @@
         user={{ gunicorn_user }}
         job="bash {{ project_path }}/scripts/run_backup.sh hourly"
         state=present
-  when: setup_cron_jobs
-  tags: cron
 
 - name: Ensure that a daily db backup job exists
   cron: name="daily db backup"
@@ -24,5 +20,3 @@
         user={{ gunicorn_user }}
         job="bash {{ project_path }}/scripts/run_backup.sh daily"
         state=present
-  when: setup_cron_jobs
-  tags: cron
