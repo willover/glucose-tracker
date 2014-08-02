@@ -1,5 +1,0 @@
----
-
-- name: Create the newrelic.ini file in the virtualenv bin directory
-  template: src=newrelic.ini.j2
-            dest={{ virtualenv_path }}/bin/newrelic.ini

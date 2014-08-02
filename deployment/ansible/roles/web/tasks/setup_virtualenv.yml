@@ -5,6 +5,15 @@
            creates={{ virtualenv_path }}/bin/activate
   tags: virtualenv
 
+- name: Create the newrelic.ini file in the virtualenv bin directory
+  template: src=newrelic.ini.j2
+            dest={{ virtualenv_path }}/bin/newrelic.ini
+  when: newrelic_license_key is defined
+  tags:
+    - newrelic
+    - deploy
+
+
 - name: Create the Gunicorn script file
   template: src=gunicorn_start.j2
             dest={{ virtualenv_path }}/bin/gunicorn_start

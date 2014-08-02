@@ -23,9 +23,3 @@
 - include: setup_cron_jobs.yml
   when: setup_cron_jobs
   tags: cron
-
-- include: setup_newrelic.yml
-  when: newrelic_license_key is defined
-  tags:
-    - newrelic
-    - deploy
