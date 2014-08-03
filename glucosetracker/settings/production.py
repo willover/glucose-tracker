@@ -60,12 +60,12 @@ CONTACTS = {
 SEND_SUBSCRIBERS_EMAIL_CONFIRMATION = True
 
 # Logentries settings
-LOGGING['handlers']['logentries'] = {
-    'level': 'INFO',
-    'token': os.environ['LOGENTRIES_TOKEN'],
-    'class': 'logentries.LogentriesHandler',
-}
-LOGGING['loggers']['']['handlers'].append('logentries')
+# LOGGING['handlers']['logentries'] = {
+#     'level': 'INFO',
+#     'token': os.environ['LOGENTRIES_TOKEN'],
+#     'class': 'logentries.LogentriesHandler',
+# }
+# LOGGING['loggers']['']['handlers'].append('logentries')
 
 # Django-storages settings
 DEFAULT_FILE_STORAGE = 'core.s3utils.MediaRootS3BotoStorage'
