@@ -35,7 +35,7 @@ class SignUpForm(forms.Form):
                 'Create Your Account',
                 Field('username', autofocus=True),
                 Field('password'),
-                Field('email', placeholder='e.g. willywonka@gmail.com'),
+                Field('email'),
                 Field('glucose_unit'),
                 Field('time_zone'),
             ),
