@@ -33,6 +33,7 @@ class BlogDetailView(DetailView, BlogBaseView):
 
 class BlogListView(ListView, BlogBaseView):
     model = Blog
+    paginate_by = 15
 
     def get_queryset(self):
         """
