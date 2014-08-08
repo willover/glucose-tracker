@@ -42,13 +42,23 @@ class BlogListView(ListView, BlogBaseView):
         """
         if self.request.user.is_authenticated() and \
                 self.request.user.is_superuser:
+            return Blog.objects.all()
+        else:
+            return Blog.objects.publicly_viewable()
+
+
+class BlogTagListView(BlogListView):
+    """
+    Display a Blog List page filtered by tag.
+    """
+
+    def get_queryset(self):
+        if self.request.user.is_authenticated() and \
+                self.request.user.is_superuser:
             result = Blog.objects.all()
         else:
             result = Blog.objects.publicly_viewable()
 
-        # Optional tag filter.
-        tag = self.request.GET.get('tag', None)
-        if tag:
-            result = result.filter(tags__name=tag)
+        result = result.filter(tags__name=self.kwargs.get('tag'))
 
         return result

@@ -24,13 +24,13 @@
     {% if is_paginated %}
         <ul class="pagination">
             {% if page_obj.has_previous %}
-              <li><a href="{% url 'blog_list_view'%}?page={{ page_obj.previous_page_number }}{% if request.GET.tag %}&tag={{ request.GET.tag }}{% endif %}">&laquo;</a></li>
+              <li><a href="{% url 'blog_list_view'%}?page={{ page_obj.previous_page_number }}">&laquo;</a></li>
             {% endif %}
             {% for page_number in page_obj.paginator.page_range %}
-              <li class={% if page_number == page_obj.number %}"active"{% else %}""{% endif %}><a href="{% url 'blog_list_view'%}?page={{ page_number }}{% if request.GET.tag %}&tag={{ request.GET.tag }}{% endif %}">{{ page_number }}</a></li>
+              <li class={% if page_number == page_obj.number %}"active"{% else %}""{% endif %}><a href="{% url 'blog_list_view'%}?page={{ page_number }}">{{ page_number }}</a></li>
             {% endfor %}
             {% if page_obj.has_next %}
-              <li><a href="{% url 'blog_list_view'%}?page={{ page_obj.next_page_number }}{% if request.GET.tag %}&tag={{ request.GET.tag }}{% endif %}">&raquo;</a></li>
+              <li><a href="{% url 'blog_list_view'%}?page={{ page_obj.next_page_number }}">&raquo;</a></li>
             {% endif %}
         </ul>
     {% endif %}
