@@ -42,9 +42,11 @@ class BlogListView(ListView, BlogBaseView):
         """
         if self.request.user.is_authenticated() and \
                 self.request.user.is_superuser:
-            return Blog.objects.all()
+            result = Blog.objects.all()
         else:
-            return Blog.objects.publicly_viewable()
+            result = Blog.objects.publicly_viewable()
+
+        return result
 
 
 class BlogTagListView(BlogListView):
@@ -53,12 +55,5 @@ class BlogTagListView(BlogListView):
     """
 
     def get_queryset(self):
-        if self.request.user.is_authenticated() and \
-                self.request.user.is_superuser:
-            result = Blog.objects.all()
-        else:
-            result = Blog.objects.publicly_viewable()
-
-        result = result.filter(tags__name=self.kwargs.get('tag'))
-
-        return result
+        result = super(BlogTagListView, self).get_queryset()
+        return result.filter(tags__name=self.kwargs.get('tag'))
