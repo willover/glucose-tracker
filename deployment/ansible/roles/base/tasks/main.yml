@@ -20,5 +20,11 @@
     - python-pycurl
     - ipython
     - supervisor
+  tags: packages
+
+- name: Install packages via pip
+  pip: name={{ item }}
+  with_items:
+    - psycopg2
     - virtualenv
   tags: packages
