@@ -20,4 +20,5 @@
     - python-pycurl
     - ipython
     - supervisor
+    - virtualenv
   tags: packages
