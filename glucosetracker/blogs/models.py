@@ -56,6 +56,9 @@ class Blog(TimeStampedModel):
     date_published = models.DateTimeField(null=True, blank=True)
     tags = TaggableManager(blank=True, help_text=None)
 
+    class Meta:
+        ordering = ['-date_published', '-created']
+
     @property
     def is_published(self):
         return self.status == 'published'

@@ -13,7 +13,7 @@
     {% if blog_list %}
         {% for blog in blog_list %}
             <h4><a href="{% url 'blog_detail_view' blog.slug %}">{{ blog.title }}</a></h4>
-            {% if blog.is_published %}Posted on {{ blog.date_published|date:'M d, Y' }}{% else %}Unpublished{% endif %} by {{ blog.author.get_full_name }}
+            {% if blog.is_published %}Posted on {{ blog.date_published|date:'M d, Y' }}{% else %}{{ blog.status|capfirst }}{% endif %} by {{ blog.author.get_full_name }}
             {% if user.is_superuser %} <a href="{% url 'admin:blogs_blog_change' blog.id %}"><u>Edit</u></a>{% endif %}
             <hr>
         {% endfor %}
