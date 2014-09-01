@@ -42,14 +42,18 @@ DATABASES = {
         'NAME': 'glucosetracker',
         'USER': 'glucosetracker',
         'PASSWORD': 'password',
-        'HOST': 'localhost',
+        'HOST': os.environ.get('POSTGRESQL_HOST', 'localhost'),
         'PORT': '',
     }
 }
 
 # Django-debug-toolbar config
 INSTALLED_APPS += ('debug_toolbar',)
-INTERNAL_IPS = ('127.0.0.1', '192.168.33.1',)
+INTERNAL_IPS = (
+    '127.0.0.1',
+    '192.168.33.1',
+    '172.17.42.1',
+)
 MIDDLEWARE_CLASSES += \
     ('debug_toolbar.middleware.DebugToolbarMiddleware', )
 
