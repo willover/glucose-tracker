@@ -63,6 +63,9 @@ class Blog(TimeStampedModel):
     def is_published(self):
         return self.status == 'published'
 
+    def get_absolute_url(self):
+        return reverse('blog_detail_view', args=[self.slug])
+
     def preview_link(self):
         if self.slug:
             return '<a href="%s" target="_blank">%s</a>' % \
