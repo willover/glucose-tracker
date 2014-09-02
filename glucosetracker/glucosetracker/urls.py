@@ -2,26 +2,26 @@ from django.conf import settings
 from django.conf.urls import patterns, include, url
 from django.contrib import admin
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
-from django.contrib.sitemaps import FlatPageSitemap, GenericSitemap
+from django.contrib.sitemaps import GenericSitemap
 from django.contrib.sitemaps.views import sitemap
 
 from core.views import HomePageView
+from core.sitemaps import StaticViewSitemap
 from glucoses.views import dashboard
 from blogs.models import Blog
 
 
 admin.autodiscover()
 
-info_dict = {
+blog_info_dict = {
     'queryset': Blog.objects.publicly_viewable(),
     'date_field': 'modified',
 }
 
 sitemaps = {
-    #'flatpages': FlatPageSitemap,
-    'blog': GenericSitemap(info_dict)
+    'static': StaticViewSitemap,
+    'blog': GenericSitemap(blog_info_dict),
 }
-
 
 urlpatterns = patterns('',
     url(r'^$', HomePageView.as_view(), name='home'),
