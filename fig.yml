@@ -22,7 +22,7 @@ django:
     && python manage.py runserver 0.0.0.0:80 --settings=settings.local"
   volumes:
     - /dockerfiles/glucose-tracker/python:/usr/local/lib/python2.7
-    - ../../glucose-tracker:/glucose-tracker
+    - ../glucose-tracker:/glucose-tracker
   ports:
     - "80:80"
   links:
