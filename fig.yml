@@ -13,10 +13,10 @@ django:
   image: jcalazan/django
   environment:
     - POSTGRESQL_HOST=postgresql
+  working_dir: /glucose-tracker/glucosetracker
   command: >
     bash -c "sleep 2
-    && pip install -r /glucose-tracker/requirements.txt
-    && cd /glucose-tracker/glucosetracker
+    && pip install -r ../requirements.txt
     && python manage.py syncdb --noinput --settings=settings.local
     && python manage.py migrate --settings=settings.local
     && python manage.py runserver 0.0.0.0:80 --settings=settings.local"
