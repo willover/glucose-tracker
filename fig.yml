@@ -17,8 +17,6 @@ django:
   command: >
     bash -c "sleep 2
     && pip install -r ../requirements.txt
-    && python manage.py syncdb --noinput --settings=settings.local
-    && python manage.py migrate --settings=settings.local
     && python manage.py runserver 0.0.0.0:80 --settings=settings.local"
   volumes:
     - /dockerfiles/glucose-tracker/python:/usr/local/lib/python2.7

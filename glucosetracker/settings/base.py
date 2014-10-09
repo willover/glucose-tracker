@@ -210,5 +210,6 @@ GRAPPELLI_ADMIN_TITLE = SITE_NAME
 # Django WYSIWYG Redactor settings.
 REDACTOR_OPTIONS = {
     'lang': 'en',
+    'toolbarFixed': 'true',
 }
 REDACTOR_UPLOAD = 'editor-uploads/'

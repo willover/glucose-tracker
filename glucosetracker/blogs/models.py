@@ -66,14 +66,6 @@ class Blog(TimeStampedModel):
     def get_absolute_url(self):
         return reverse('blog_detail_view', args=[self.slug])
 
-    def preview_link(self):
-        if self.slug:
-            return '<a href="%s" target="_blank">%s</a>' % \
-                   (reverse('blog_detail_view', args=[self.slug]), self.title)
-        else:
-            return 'Not available (you must save this article first)'
-    preview_link.allow_tags = True
-
     objects = BlogManager()
 
     def __unicode__(self):

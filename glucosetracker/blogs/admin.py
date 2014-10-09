@@ -18,7 +18,7 @@ class BlogAdmin(admin.ModelAdmin):
     form = BlogAdminForm
 
     prepopulated_fields = {'slug': ('title',)}
-    readonly_fields = ('preview_link', 'created', 'modified')
+    readonly_fields = ('created', 'modified')
     list_display = ('title', 'author', 'status', 'date_published', 'created',
                     'modified', 'tag_list',)
     list_select_related = ('author', 'tags',)
@@ -30,7 +30,7 @@ class BlogAdmin(admin.ModelAdmin):
 
     fieldsets = (
         ('', {
-            'fields': ('preview_link', 'status', 'author',)
+            'fields': ('status', 'author',)
         }),
         ('Content', {
             'fields': ('title', 'slug', 'content', 'tags', 'date_published')
