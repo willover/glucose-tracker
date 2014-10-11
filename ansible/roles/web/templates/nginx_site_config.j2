@@ -21,6 +21,9 @@ server {
 
     client_max_body_size 4G;
 
+    gzip_types text/plain text/css application/json application/x-javascript text/xml application/xml
+        application/xml+rss text/javascript image/svg+xml application/vnd.ms-fontobject;
+        
     access_log {{ nginx_access_log_file }};
     error_log {{ nginx_error_log_file }};
 
