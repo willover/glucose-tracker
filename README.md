@@ -1,5 +1,5 @@
-Glucose Tracker
-===============
+GlucoseTracker
+==============
 
 A simple web application for keeping track of blood glucose levels.  Written in Python using the Django framework.
 
