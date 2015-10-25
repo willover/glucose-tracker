@@ -24,7 +24,7 @@
          && python manage.py collectstatic --noinput --settings={{ django_settings_file }}
   when: run_django_collectstatic
 
-- name: Load random glucose data
+- name: DEBUG-LRGD Load random glucose data
   shell: . {{ virtualenv_path }}/bin/activate
          && . {{ virtualenv_path }}/bin/postactivate
          && cd {{ application_path }}
